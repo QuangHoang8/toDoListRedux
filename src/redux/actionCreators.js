@@ -9,3 +9,17 @@ export const onAddTodo = (currentItem) => ({
     isFavorite: false,
   },
 });
+export const onChangeCompleteStatus = (taskId, isCompleted) => ({
+  type: "changeCompleteStatus",
+  payload: {
+    id: taskId,
+    isCompleted: isCompleted,
+  },
+});
+export const onChangeFavoriteStatus = (taskId, isFavorite) => ({
+  type: "changeFavoriteStatus",
+  payload: {
+    id: taskId,
+    isFavorite: isFavorite,
+  },
+});

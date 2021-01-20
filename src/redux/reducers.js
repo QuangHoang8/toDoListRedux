@@ -7,6 +7,28 @@ const addingToDo = function (state = { todos: [] }, action) {
         todos: [...state.todos, action.payload],
       };
     }
+    case "changeCompleteStatus": {
+      return {
+        todos: state.todos.map((t) =>
+          t.id === action.payload.id
+            ? {
+                ...t,
+                isCompleted: action.payload.isCompleted,
+                completedDate: new Date().getTime(),
+              }
+            : t
+        ),
+      };
+    }
+    case "changeFavoriteStatus": {
+      return {
+        todos: state.todos.map((t) =>
+          t.id === action.payload.id
+            ? { ...t, isFavorite: action.payload.isFavorite }
+            : t
+        ),
+      };
+    }
     default:
       return state;
   }

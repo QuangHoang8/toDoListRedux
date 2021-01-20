@@ -1,8 +1,12 @@
 import React from "react";
 import { StarOutlined, StarFilled } from "@ant-design/icons";
 import classes from "./TaskListItems.module.css";
-
-function TaskListItems({
+import { connect } from "react-redux";
+import {
+  onChangeCompleteStatus,
+  onChangeFavoriteStatus,
+} from "../redux/actionCreators";
+export function TaskListItems({
   task,
   onChangeCompleteStatus,
   onChangeFavoriteStatus,
@@ -36,4 +40,12 @@ function TaskListItems({
     </li>
   );
 }
-export default TaskListItems;
+const mapStateToProps = (state) => {
+  console.log(state.addingToDo);
+  return {
+    todos: state.addingToDo.todos,
+  };
+};
+const mapDispatchToProps = { onChangeCompleteStatus, onChangeFavoriteStatus };
+
+export default connect(mapStateToProps, mapDispatchToProps)(TaskListItems);

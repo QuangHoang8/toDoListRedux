@@ -25,21 +25,21 @@ export function App({ todos }) {
   //   ]);
   // };
 
-  const handleChangeCompleteStatus = (taskId, newStatus) => {
-    todos.map((t) =>
-      t.id === taskId
-        ? {
-            ...t,
-            isCompleted: newStatus,
-            completedDate: new Date().getTime(),
-          }
-        : t
-    );
-  };
+  // const handleChangeCompleteStatus = (taskId, newStatus) => {
+  //   todos.map((t) =>
+  //     t.id === taskId
+  //       ? {
+  //           ...t,
+  //           isCompleted: newStatus,
+  //           completedDate: new Date().getTime(),
+  //         }
+  //       : t
+  //   );
+  // };
 
-  const handleChangeFavoriteStatus = (taskId, newStatus) => {
-    todos.map((t) => (t.id === taskId ? { ...t, isFavorite: newStatus } : t));
-  };
+  // const handleChangeFavoriteStatus = (taskId, newStatus) => {
+  //   todos.map((t) => (t.id === taskId ? { ...t, isFavorite: newStatus } : t));
+  // };
 
   const [completedList, inCompletedList] = _.partition(
     todos,
@@ -49,16 +49,8 @@ export function App({ todos }) {
   return (
     <div className="App">
       <Header />
-      <TaskList
-        incompleteItems={inCompletedList}
-        onChangeCompleteStatus={handleChangeCompleteStatus}
-        onChangeFavoriteStatus={handleChangeFavoriteStatus}
-      />
-      <CompleteTask
-        completedItems={completedList}
-        onChangeCompleteStatus={handleChangeCompleteStatus}
-        onChangeFavoriteStatus={handleChangeFavoriteStatus}
-      />
+      <TaskList incompleteItems={inCompletedList} />
+      <CompleteTask completedItems={completedList} />
     </div>
   );
 }
